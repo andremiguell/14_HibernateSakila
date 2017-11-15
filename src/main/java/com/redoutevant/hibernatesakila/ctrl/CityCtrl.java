@@ -1,21 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.redoutevant.hibernatesakila.ctrl;
+
+import com.redoutevant.hibernatesakila.pojo.City;
+import java.util.List;
 
 /**
  *
- * @author dev
+ * @author AMV
  */
 public interface CityCtrl{
 
-    void closeAll();
+    public void closeAll();
 
-    int count();
+    public int count();
 
-    void setHql(String hql);
-    public String getHql();
+    public void setHqlCount(String hql);
     
+    public String getHqlCount();
+    
+    public String getHqlCities();
+
+    public void setHqlCities(String hqlCities);
+    
+    public List<City> getCities();
 }

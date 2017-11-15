@@ -13,8 +13,11 @@ http://www.springframework.org/schema/util
 http://www.springframework.org/schema/util/spring-util-3.1.xsd">
     
     <bean id="city" class="com.redoutevant.hibernatesakila.ctrl.CityHelper">
-        <property name="hql">
+        <property name="hqlCount">
             <value>SELECT count(*) from City</value>
+        </property>
+        <property name="hqlCities">
+            <value>FROM City</value>
         </property>
     </bean>
 </beans>

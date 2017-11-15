@@ -1,5 +1,6 @@
 package com.redoutevant.hibernatesakila.ctrl;
 
+import com.redoutevant.hibernatesakila.pojo.City;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -14,19 +15,20 @@ import org.springframework.stereotype.Service;
 public class CityHelper implements CityCtrl{
     
     private SessionFactory sf;
-    private String hql;
+    private String hqlCount; //spring setter injection
+    private String hqlCities; //spring setter injection
     private Query q;
+    private Session s;
     
     public CityHelper() {
         sf = HibernateUtil.createSessionFactory();
+        s = sf.openSession();
     }
     
     @Override
     public int count() {
-        Session s = sf.openSession();
-        q = s.createQuery(hql);
+        q = s.createQuery(hqlCount);
         List l = q.list();
-        s.close();
         return Integer.parseInt(l.get(0).toString());
     }
     
@@ -37,12 +39,28 @@ public class CityHelper implements CityCtrl{
     }
 
     @Override
-    public void setHql(String hql) {
-        this.hql = hql;
+    public void setHqlCount(String hql) {
+        this.hqlCount = hql;
     }
     
     @Override
-    public String getHql() {
-        return this.hql;
+    public String getHqlCount() {
+        return this.hqlCount;
+    }
+    
+    @Override
+    public String getHqlCities() {
+        return hqlCities;
+    }
+
+    @Override
+    public void setHqlCities(String hqlCities) {
+        this.hqlCities = hqlCities;
+    }
+    
+    @Override
+    public List<City> getCities(){
+       q = s.createQuery(hqlCities);
+       return q.list();
     }
 }
