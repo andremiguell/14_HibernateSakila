@@ -46,6 +46,7 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/sakila?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">dev</property>
     <property name="hibernate.connection.password">dev</property>
+    <property name="hibernate.show_sql">true</property>
     <mapping class="com.redoutevant.hibernatesakila.pojo.City"/>
     <mapping class="com.redoutevant.hibernatesakila.pojo.Country"/>
   </session-factory>
